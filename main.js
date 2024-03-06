@@ -88,7 +88,7 @@ const app = {
         {
             name: "Chúng ta của hiện tại",
             singer: "Sơn Tùng",
-            path: "./songs/y2mate.com - MONO  Open Your Eyes Official Music Video.mp3",
+            path: "./songs/y2mate.com - Chúng Ta Của Hiện Tại.mp3",
             image:
                 "https://i.ytimg.com/vi/bNp9pn0ni3I/0.jpg"
         }
@@ -178,7 +178,7 @@ const app = {
             iterations: Infinity
         })
         cdAnimate.pause()
-        audio.currentTime = 0;
+        
         // Play / Pause Song
         function playSong() {
             audio.play();
@@ -236,6 +236,7 @@ const app = {
         function handleSong() {
             audio.addEventListener('canplay', function () {
                 audio.currentTime = progress.value = 0
+                seek()
                 player.classList.add('playing')
                 playSong()
             }, { once: true });
