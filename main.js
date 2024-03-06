@@ -122,7 +122,7 @@ const app = {
             singer: "WEAN x MCK x TENKITSUNE",
             path: "./songs/y2mate.com - CHƯƠNG 2 CỦA TƯƠNG LAI  WEAN x MCK x TENKITSUNE.mp3",
             image:
-                "https://i.ytimg.com/vi/VIjuCzNI0rQ/maxresdefault.jpg"
+                "https://i.ytimg.com/vi/PjLnZ3T11f4/maxresdefault.jpg"
         }
         
     ],
@@ -294,7 +294,7 @@ const app = {
         playlist.addEventListener('click', function (e) {
             // Lấy ra Element không phải active || option
             const songElement = e.target.closest('.song:not(.active)')
-            if (songElement || e.target.closest('.option')) {
+            if (songElement && !e.target.closest('.option')) {
                 app.currentIndex = Number(songElement.dataset.index)
                 app.loadCurrentSongs()
                 app.removeActive()
