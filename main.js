@@ -229,7 +229,7 @@ const app = {
         // Xử lí khi tua
         progress.addEventListener('input', function (e) {
             const seekTime = (audio.duration / 100 * e.target.value);
-            audio.currentTime = progress.value = seekTime
+            audio.currentTime = seekTime
             seek()
             player.classList.add('playing')
             playSong()
