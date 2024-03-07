@@ -218,9 +218,12 @@ const app = {
         // Update vị trí con trỏ tua
         function seek() {
             audio.addEventListener('timeupdate', function () {
-                const progressPercent = Math.floor((audio.currentTime / audio.duration) * 100);
-                progress.value = progressPercent;
-            });
+                if(audio.duration) {
+                    const progressPercent = (audio.currentTime / audio.duration) * 100;
+                    progress.value = progressPercent
+                }
+    
+            })
         }
 
         // Xử lí khi tua
