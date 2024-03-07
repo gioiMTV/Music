@@ -222,10 +222,8 @@ const app = {
                     const progressPercent = (audio.currentTime / audio.duration) * 100;
                     progress.value = progressPercent
                 }
-    
             })
         }
-
         // Xử lí khi tua
         progress.addEventListener('input', function (e) {
             const seekTime = (audio.duration / 100 * e.target.value);
@@ -237,12 +235,10 @@ const app = {
 
         // Xử lí Song khi Next / Prev / Random
         function handleSong() {
-            audio.addEventListener('canplay', function () {
                 audio.currentTime = progress.value = 0
                 seek()
                 player.classList.add('playing')
                 playSong()
-            }, { once: true });
         }
         // Xử lí khi Next Song
         next.addEventListener('click', function () {
