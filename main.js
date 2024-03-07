@@ -124,6 +124,46 @@ const app = {
             image:
                 "https://i.ytimg.com/vi/PjLnZ3T11f4/maxresdefault.jpg"
         }
+        ,
+        {
+            name: "Thanh Xuân",
+            singer: "Da LAB ",
+            path: "./songs/y2mate.com - Thanh Xuân  Da LAB Official MV.mp3",
+            image:
+                "https://i.ytimg.com/vi/GgQFO8dL5XQ/0.jpg"
+        }
+        ,
+        {
+            name: "I'm Not Her",
+            singer: "Clara Mae ",
+            path: "./songs/y2mate.com - Clara Mae  Im Not Her Official Video.mp3",
+            image:
+                "https://i.ytimg.com/vi/iUNxOzxPEVI/0.jpg"
+        }
+        ,
+        {
+            name: "Pano",
+            singer: "Zack Tabudlo",
+            path: "./songs/y2mate.com - CHƯƠNG 2 CỦA TƯƠNG LAI  WEAN x MCK x TENKITSUNE.mp3",
+            image:
+                "y2mate.com - Zack Tabudlo  Pano Official Vietnamese Lyric Video.mp3"
+        }
+        ,
+        {
+            name: "Hello",
+            singer: "Adele",
+            path: "./songs/y2mate.com - Adele  Hello Official Music Video.mp3",
+            image:
+                "https://i.ytimg.com/vi/YQHsXMglC9A/0.jpg"
+        }
+        ,
+        {
+            name: "La la la ft. Sam Smith",
+            singer: "Naughty Boy",
+            path: "./songs/y2mate.com - Naughty Boy  La la la ft Sam Smith Official Video.mp3",
+            image:
+                "https://i.ytimg.com/vi/3O1_3zBUKM8/0.jpg"
+        }
         
     ],
     defineProperties: function () {
