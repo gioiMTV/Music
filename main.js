@@ -144,8 +144,12 @@ const app = {
         {
             name: "Why Not Me",
             singer: "Enrique Iglesias",
+            path: "./songs/y2mate.com - Why Not Me Enrique Iglesias Lyrics Vietsub.mp3",
+            name: "Why Not Me",
+            singer: "Enrique Iglesias",
             path: "./songs/y2mate.com - Why Not Me  Enrique Iglesias Lyrics  Vietsub.mp3",
             image:
+                "https://i.ytimg.com/vi/rtzebRfn0_I/0.jpg"
                 "https://i.ytimg.com/vi/rtzebRfn0_I/0.jpg"
         }
         ,
