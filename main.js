@@ -37,10 +37,10 @@ const app = {
                 "https://home.voca.vn/assets/img/upload/images/Loi-dich-bai-hat-2002.jpg"
         },
         {
-            name: "Cơm áo gạo tiền",
-            singer: "7dnight",
-            path: "./songs/y2mate.com - 7dnight  Cơm Áo Gạo Tiền Official Video.mp3",
-            image: "https://i.ytimg.com/vi/dOXGoW0yu0o/sddefault.jpg"
+            name: "Người Tình Mùa Đông",
+            singer: "Hà Anh Tuấn",
+            path: "./songs/y2mate.com -   SEE SING SHARE 2  Tập 3 Người Tình Mùa Đông  Hà Anh Tuấn.mp3",
+            image: "https://i.ytimg.com/vi/dns2WLu8Su8/0.jpg"
         },
         {
             name: "Chắc là say òi",
