@@ -142,11 +142,11 @@ const app = {
         }
         ,
         {
-            name: "Pano",
-            singer: "Zack Tabudlo",
-            path: "./songs/y2mate.com - CHƯƠNG 2 CỦA TƯƠNG LAI  WEAN x MCK x TENKITSUNE.mp3",
+            name: "Why Not Me",
+            singer: "Enrique Iglesias",
+            path: "./songs/y2mate.com - Why Not Me Enrique Iglesias Lyrics Vietsub.mp3",
             image:
-                "y2mate.com - Zack Tabudlo  Pano Official Vietnamese Lyric Video.mp3"
+                "https://i.ytimg.com/vi/rtzebRfn0_I/0.jpg"
         }
         ,
         {
