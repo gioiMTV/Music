@@ -150,7 +150,7 @@ const app = {
             path: "./songs/y2mate.com - Why Not Me  Enrique Iglesias Lyrics  Vietsub.mp3",
             image:
                 "https://i.ytimg.com/vi/rtzebRfn0_I/0.jpg"
-                "https://i.ytimg.com/vi/rtzebRfn0_I/0.jpg"
+                
         }
         ,
         {
