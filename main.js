@@ -14,7 +14,7 @@ const app = {
     currentIndex: 0,
     isRandom: 0,
     isRepeat: 0,
-   
+    currentVolume: 1,
     songs: [
         {
             name: "Navada",
@@ -129,7 +129,7 @@ const app = {
                     <i class="fas fa-ellipsis-h"></i>
                     <div class="setting" data-index="${index}">
                         <i class="fa-solid fa-volume-high fa-xs"></i>
-                        <input data-index="${index}" type="range" class="volume" name="" id="" value="${this.currentVolume}" step="0.01" min="0" max="1">
+                        <input  data-index="${index}" type="range" class="volume" name="" id="" value="${this.currentVolume}" step="0.01" min="0" max="1">
                     </div>
                 </div>
             </div>
@@ -137,12 +137,13 @@ const app = {
         }).join("");
         playlist.innerHTML = htmls;
     },
-    // Add Active Song
+    // Add Active Song && set volume
     addActive: function () {
         // Lấy ra bài hát
         const currentSongDiv = $(`.song:nth-child(${app.currentIndex + 1})`);
         // Thêm lớp "active"
         currentSongDiv.classList.add('active');
+        currentSongDiv.querySelector('.volume').value = this.currentVolume
     },
     // Remove Active Song
     removeActive: function () {
@@ -162,6 +163,7 @@ const app = {
                 setting.style.display = 'flex';
             }
         });
+        
     },
     hideVolume: function(index) {
         const settings = $$('.setting');
@@ -236,11 +238,12 @@ const app = {
 
         // Xử lí Song khi Next / Prev / Random
         function handleSong() {
-                audio.volume = this.currentSong;
-                
+                audio.volume = app.currentVolume;
+                console.log(app.currentVolume);
                 audio.currentTime = progress.value = 0
                 seek()
-                player.classList.add('playing')
+                player.classList.add('playing')  
+                app.hideVolume();
                 playSong()
         }
         // Xử lí khi Next Song
@@ -307,27 +310,25 @@ const app = {
             }
             if(e.target.closest('.option') && e.target.closest('.song.active')) {
                 app.showVolume(e.target.closest('.option').dataset.index);
-                
-                // chang volume
+                // change volume
                 const volumes = document.querySelectorAll('.volume');
                 volumes.forEach(volume => {
                     if(volume.dataset.index == e.target.closest('.option').dataset.index) {
                         audio.volume = Number(volume.value);
                         app.currentVolume = Number(volume.value);
-                        
                         volume.addEventListener('input', function(e) {
                             audio.volume = Number(e.target.value);
                             app.currentVolume = Number(e.target.value);
                         });
+                        
                     }
                 });
             } 
             else {
                 app.hideVolume();
-              
                 if(e.target.closest('.song:not(.active)') && !e.target.closest('.option')) {
                     const indexSong = e.target.closest('.song').dataset.index;
-                    handleSong()
+                      
                 }
             }   
 
