@@ -14,6 +14,7 @@ const app = {
     currentIndex: 0,
     isRandom: 0,
     isRepeat: 0,
+   
     songs: [
         {
             name: "Navada",
@@ -42,63 +43,13 @@ const app = {
             path: "./songs/y2mate.com -   SEE SING SHARE 2  Tập 3 Người Tình Mùa Đông  Hà Anh Tuấn.mp3",
             image: "https://i.ytimg.com/vi/dns2WLu8Su8/0.jpg"
         },
-        {
-            name: "Chắc là say òi",
-            singer: "24kright",
-            path: "./songs/y2mate.com - CHẮC LÀ SAY ÒI.mp3",
-            image:
-                "https://i.ytimg.com/vi/70tC2lC3EIk/maxresdefault.jpg"
-        },
-        {
-            name: "Last night",
-            singer: "Hazel",
-            path:
-                "./songs/y2mate.com - Last Night  Animated Video Lyrics.mp3",
-            image: "https://avatar-ex-swe.nixcdn.com/song/2023/10/24/8/7/6/4/1698132443188_640.jpg"
-        },
-        {
-            name: "Tip Toe",
-            singer: "HYBS",
-            path: "./songs/y2mate.com - HYBS  Tip Toe speed up.mp3",
-            image:
-                "https://i.ytimg.com/vi/sK_us-qNYQ0/hqdefault.jpg"
-        },
-        {
-            name: "At my worst",
-            singer: "Pink sweat",
-            path:
-                "./songs/y2mate.com - Pink Sweat  At My Worst Official Video.mp3",
-            image:
-                "https://avatar-ex-swe.nixcdn.com/song/2020/09/15/3/7/8/3/1600184151280_640.jpg"
-        },
-        {
-            name: "Hello VietNam",
-            singer: "Pham Quynh Anh",
-            path: "./songs/y2mate.com - Hello Viet NamPham Quynh Anh HDLyricsHD Kara  Vietsub.mp3",
-            image:
-                "https://royalasiatravelvncom994.chiliweb.org/wp-content/uploads/2017/12/maxresdefault.jpg"
-        },
-        {
-            name: "Open your eyes",
-            singer: "MONO",
-            path: "./songs/y2mate.com - MONO  Open Your Eyes Official Music Video.mp3",
-            image:
-                "https://i.ytimg.com/vi/PjLnZ3T11f4/maxresdefault.jpg"
-        },
+        
         {
             name: "Chúng ta của hiện tại",
             singer: "Sơn Tùng",
             path: "./songs/y2mate.com - Chúng Ta Của Hiện Tại.mp3",
             image:
                 "https://i.ytimg.com/vi/bNp9pn0ni3I/0.jpg"
-        }
-        ,
-        {
-            name: "Soda",
-            singer: "MCK",
-            path: "./songs/y2mate.com - SODA  MCK prodGC.mp3",
-            image:
-                "https://i.ytimg.com/vi/kJw-XWgfPm8/0.jpg"
         }
         ,
         {
@@ -109,22 +60,7 @@ const app = {
                 "https://i.ytimg.com/vi/LSMDNL4n0kM/maxresdefault.jpg"
         }
         ,
-        {
-            name: "BUỒN HAY VUI",
-            singer: "VSOUL x MCK x Obito x Ronboogz x Boyzed",
-            path: "./songs/y2mate.com - BUỒN HAY VUI  VSOUL x MCK x Obito x Ronboogz x Boyzed Official Audio.mp3",
-            image:
-                "https://i.ex-cdn.com/60giay.com/files/content/2024/01/11/414681110_753932120092030_7490686123113949773_n-1322.jpg"
-        }
-        ,
-        {
-            name: "CHƯƠNG 2 CỦA TƯƠNG LAI",
-            singer: "WEAN x MCK x TENKITSUNE",
-            path: "./songs/y2mate.com - CHƯƠNG 2 CỦA TƯƠNG LAI  WEAN x MCK x TENKITSUNE.mp3",
-            image:
-                "https://i.ytimg.com/vi/PjLnZ3T11f4/maxresdefault.jpg"
-        }
-        ,
+       
         {
             name: "Thanh Xuân",
             singer: "Da LAB ",
@@ -183,18 +119,22 @@ const app = {
     render: function () {
         const htmls = this.songs.map((song, index) => {
             return `
-                <div class="song ${index === app.currentIndex ? 'active' : ''}" data-index= ${index}>
-                    <div class="thumb" style="background-image: url(${song.image})"></div>
-                        <div class="body">
-                            <h3 class="title">${song.name}</h3>
-                            <p class="author">${song.singer}</p>
-                        </div>
-                        <div class="option">
-                            <i class="fas fa-ellipsis-h"></i>
-                        </div>
+            <div data-index="${index}" class="song ${(this.currentIndex == index) ? 'active' : ''}">
+                <div class="thumb" style="background-image: url(${song.image})"></div>
+                <div class="body">
+                    <h3 class="title">${song.name}</h3>
+                    <p class="author">${song.singer}</p>
                 </div>
-                `;
-        }).join('');
+                <div class="option" data-index="${index}">
+                    <i class="fas fa-ellipsis-h"></i>
+                    <div class="setting" data-index="${index}">
+                        <i class="fa-solid fa-volume-high fa-xs"></i>
+                        <input data-index="${index}" type="range" class="volume" name="" id="" value="${this.currentVolume}" step="0.01" min="0" max="1">
+                    </div>
+                </div>
+            </div>
+            `;
+        }).join("");
         playlist.innerHTML = htmls;
     },
     // Add Active Song
@@ -214,6 +154,21 @@ const app = {
     scrollToActiveSong: function () {
         const currentSongDiv = $(`.song:nth-child(${app.currentIndex + 1})`);
         currentSongDiv.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })
+    },
+    showVolume: function(index) {
+        const settings = $$('.setting');
+        settings.forEach(setting => {
+            if(setting.dataset.index == index) {
+                setting.style.display = 'flex';
+            }
+        });
+    },
+    hideVolume: function(index) {
+        const settings = $$('.setting');
+        settings.forEach(setting => {
+            setting.style.display = 'none';
+        });
+    
     },
     handleEvents: function () {
         // Xử lí CD quay / dừng
@@ -281,6 +236,8 @@ const app = {
 
         // Xử lí Song khi Next / Prev / Random
         function handleSong() {
+                audio.volume = this.currentSong;
+                
                 audio.currentTime = progress.value = 0
                 seek()
                 player.classList.add('playing')
@@ -348,6 +305,32 @@ const app = {
                 app.scrollToActiveSong()
                 handleSong()
             }
+            if(e.target.closest('.option') && e.target.closest('.song.active')) {
+                app.showVolume(e.target.closest('.option').dataset.index);
+                
+                // chang volume
+                const volumes = document.querySelectorAll('.volume');
+                volumes.forEach(volume => {
+                    if(volume.dataset.index == e.target.closest('.option').dataset.index) {
+                        audio.volume = Number(volume.value);
+                        app.currentVolume = Number(volume.value);
+                        
+                        volume.addEventListener('input', function(e) {
+                            audio.volume = Number(e.target.value);
+                            app.currentVolume = Number(e.target.value);
+                        });
+                    }
+                });
+            } 
+            else {
+                app.hideVolume();
+              
+                if(e.target.closest('.song:not(.active)') && !e.target.closest('.option')) {
+                    const indexSong = e.target.closest('.song').dataset.index;
+                    handleSong()
+                }
+            }   
+
         })
     },
     nextSong: function () {
